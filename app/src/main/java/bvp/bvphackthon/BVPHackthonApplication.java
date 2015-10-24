@@ -27,4 +27,13 @@ public class BVPHackthonApplication extends Application {
         Parse.initialize(this, PARSE_KEY, PARSE_SECRET);
     }
 
+    //TODO: Replace with Parse Local Datastore pattern
+    public static void putInCache(String objectId, ParseObject parseObject) {
+        parseObjectCache.put(objectId, parseObject);
+    }
+
+    public static ParseObject readFromCache(String objectId) {
+        return parseObjectCache.get(objectId);
+    }
+
 }

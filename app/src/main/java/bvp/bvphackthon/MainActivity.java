@@ -1,6 +1,7 @@
 package bvp.bvphackthon;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -8,7 +9,11 @@ import android.view.MenuItem;
 
 import bvp.bvphackthon.models.Post;
 
-public class MainActivity extends Activity implements MainActivityFragment.PostsListFragmentListener {
+public class MainActivity extends Activity
+        implements MainActivityFragment.PostsListFragmentListener,
+        PostDetailsFragment.PostDetailsFragmentListener {
+
+    private PostDetailsFragment postDetailsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,24 @@ public class MainActivity extends Activity implements MainActivityFragment.Posts
 
     @Override
     public void onPostListItemClick(Post post) {
-        Log.d("PostClicked", "Post Clicked");
+        BVPHackthonApplication.putInCache(post.getObjectId(), post);
+
+        if (postDetailsFragment == null) {
+            postDetailsFragment = PostDetailsFragment.newInstance(post.getObjectId());
+        } else {
+            postDetailsFragment.setPostId(post.getObjectId());
+        }
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment, postDetailsFragment, "post_details");
+        transaction.addToBackStack("details");
+        transaction.commit();
+    }
+
+    @Override
+    public void onConfirmation() {
+        Log.d("BVP", "Pickup Confirmed");
     }
 }
+
+
