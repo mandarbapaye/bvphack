@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,11 @@ public class PostDetailsFragment extends Fragment {
     @InjectView(R.id.llArrivalTime)
     LinearLayout llArrivalTime;
 
+    @InjectView(R.id.ivConfirmation)
+    ImageView ivConfirmation;
+
+    @InjectView(R.id.tvStatus)
+    TextView tvStatus;
 
     @InjectView(R.id.timer5)
     TextView timer5;
@@ -75,6 +81,11 @@ public class PostDetailsFragment extends Fragment {
     @InjectView(R.id.timer60)
     TextView timer60;
 
+    @InjectView(R.id.llTimers)
+    LinearLayout llTimers;
+
+    @InjectView(R.id.tvConfirmWithTime)
+    TextView tvConfirmWithTime;
 
     // TODO: Rename and change types and number of parameters
     public static PostDetailsFragment newInstance(String postId) {
@@ -117,9 +128,19 @@ public class PostDetailsFragment extends Fragment {
                 if (!isClaimClicked) {
                     ivClaim.setImageResource(R.drawable.confirm_button);
                     llArrivalTime.setVisibility(View.VISIBLE);
+                    isClaimClicked = true;
                 } else {
                     BVPHackthonApplication.putInClaimedPostsCache(post);
-                    mListener.onConfirmation();
+
+                    ivClaim.setVisibility(View.INVISIBLE);
+                    tvStatus.setText("Confirmed !!");
+                    tvStatus.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                    tvStatus.setTextColor(getResources().getColor(R.color.teal));
+                    ivConfirmation.setVisibility(View.VISIBLE);
+                    llTimers.setVisibility(View.GONE);
+                    tvConfirmWithTime.setText("Be there in " + selectedTime + " mins and be sure to say thank you :)");
+                    tvConfirmWithTime.setVisibility(View.VISIBLE);
+
                 }
             }
         });
