@@ -176,6 +176,12 @@ public class PostDetailsFragment extends Fragment {
         ivFoodImageDetails.setParseFile(post.getPhoto());
         ivFoodImageDetails.loadInBackground();
 
+        ivFoodImageDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
         return v;
     }
 
