@@ -1,6 +1,7 @@
 package bvp.bvphackthon;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -25,6 +26,8 @@ public class PostDetailsFragment extends Fragment {
     private Post post;
     private boolean isClaimClicked = false;
     private PostDetailsFragmentListener mListener;
+
+    private String selectedTime = "30";
 
     @InjectView(R.id.ivFoodImageDetails)
     ParseImageView ivFoodImageDetails;
@@ -52,6 +55,26 @@ public class PostDetailsFragment extends Fragment {
 
     @InjectView(R.id.llArrivalTime)
     LinearLayout llArrivalTime;
+
+
+    @InjectView(R.id.timer5)
+    TextView timer5;
+
+    @InjectView(R.id.timer10)
+    TextView timer10;
+
+    @InjectView(R.id.timer20)
+    TextView timer20;
+
+    @InjectView(R.id.timer30)
+    TextView timer30;
+
+    @InjectView(R.id.timer45)
+    TextView timer45;
+
+    @InjectView(R.id.timer60)
+    TextView timer60;
+
 
     // TODO: Rename and change types and number of parameters
     public static PostDetailsFragment newInstance(String postId) {
@@ -101,6 +124,48 @@ public class PostDetailsFragment extends Fragment {
             }
         });
 
+        timer5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                markTextAsSelected((TextView)v);
+            }
+        });
+
+        timer10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                markTextAsSelected((TextView)v);
+            }
+        });
+
+        timer20.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                markTextAsSelected((TextView)v);
+            }
+        });
+
+        timer30.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                markTextAsSelected((TextView)v);
+            }
+        });
+
+        timer45.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                markTextAsSelected((TextView)v);
+            }
+        });
+
+        timer60.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                markTextAsSelected((TextView)v);
+            }
+        });
+
         tvPostDetailsTitle.setText(post.getTitle());
         tvMealsDetails.setText(String.valueOf(post.getNumberOfFeeders()));
         tvMinsDetails.setText(String.valueOf("40"));
@@ -141,5 +206,27 @@ public class PostDetailsFragment extends Fragment {
     public interface PostDetailsFragmentListener {
         public void onConfirmation();
     }
+
+    private void markTextAsSelected(TextView textView) {
+        selectedTime = textView.getText().toString();
+        textView.setTextColor(getResources().getColor(R.color.teal));
+        textView.setTypeface(null, Typeface.BOLD);
+
+        markTextAsDeSelected();
+    }
+
+    private void markTextAsDeSelected() {
+        TextView[] tvs = {timer5, timer10, timer20, timer30, timer45, timer60};
+
+        for (TextView tv : tvs) {
+            if (!tv.getText().toString().equalsIgnoreCase(selectedTime)) {
+                tv.setTextColor(getResources().getColor(android.R.color.black));
+                tv.setTypeface(null, Typeface.NORMAL);
+                tv.setBackground(null);
+            }
+        }
+
+    }
+
 
 }
