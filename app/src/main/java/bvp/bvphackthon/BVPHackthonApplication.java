@@ -19,7 +19,7 @@ public class BVPHackthonApplication extends Application {
     private final static String PARSE_SECRET = "WFSmGVLIiAGtq9FIAFtMTEXwqLEav0zBDXD1G3ap";
     private static Context context;
     private static Map<String, ParseObject> parseObjectCache = new HashMap<String, ParseObject>();
-    private static List<Post> claimedPostsCache = new ArrayList<Post>();
+    private static Map<String, Post> claimedPostsCache = new HashMap<String, Post>();
 
     @Override
     public void onCreate() {
@@ -40,11 +40,11 @@ public class BVPHackthonApplication extends Application {
     }
 
     public static void putInClaimedPostsCache(Post post) {
-        claimedPostsCache.add(post);
+        claimedPostsCache.put(post.getObjectId(), post);
     }
 
-    public static ParseObject readFromClaimedCache() {
-        return claimedPostsCache.get(0);
+    public static boolean isClaimedByMe(String postId) {
+        return claimedPostsCache.containsKey(postId);
     }
 
 

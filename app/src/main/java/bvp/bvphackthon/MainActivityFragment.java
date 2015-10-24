@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.parse.FindCallback;
+import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,9 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import bvp.bvphackthon.adapters.PostsListAdapter;
+import bvp.bvphackthon.events.ClaimFiledEvent;
 import bvp.bvphackthon.models.Post;
+import bvp.bvphackthon.utils.EventBusProvider;
 import bvp.bvphackthon.utils.ParseClient;
 
 /**
@@ -50,17 +53,21 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.inject(this, v);
-
         setupHandlers();
-
-        loadPostsDataFromParse();
+        EventBusProvider.register(this);
         return v;
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        loadPostsDataFromParse();
         lvPosts.setAdapter(postsListAdapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     private void setupHandlers() {
@@ -73,6 +80,8 @@ public class MainActivityFragment extends Fragment {
     }
 
     private void loadPostsDataFromParse() {
+        postsListAdapter.clear();
+        postsListAdapter.notifyDataSetChanged();
         ParseClient.getAll(Post.class, new FindCallback<Post>() {
             @Override
             public void done(List<Post> postsList, com.parse.ParseException e) {
@@ -90,6 +99,7 @@ public class MainActivityFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
+        EventBusProvider.unregister(this);
     }
 
     @Override
@@ -111,6 +121,12 @@ public class MainActivityFragment extends Fragment {
     public interface PostsListFragmentListener {
         void onPostListItemClick(Post post);
     }
+
+    @Subscribe
+    public void claimFiled(ClaimFiledEvent event) {
+        loadPostsDataFromParse();
+    }
+
 
 }
 

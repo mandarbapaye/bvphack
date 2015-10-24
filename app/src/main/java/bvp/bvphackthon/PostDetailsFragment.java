@@ -17,7 +17,9 @@ import com.parse.ParseImageView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import bvp.bvphackthon.events.ClaimFiledEvent;
 import bvp.bvphackthon.models.Post;
+import bvp.bvphackthon.utils.EventBusProvider;
 
 
 public class PostDetailsFragment extends Fragment {
@@ -122,6 +124,10 @@ public class PostDetailsFragment extends Fragment {
             post = (Post) BVPHackthonApplication.readFromCache(postId);
         }
 
+        if (BVPHackthonApplication.isClaimedByMe(postId)) {
+            ivClaim.setVisibility(View.INVISIBLE);
+        }
+
         ivClaim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,6 +147,7 @@ public class PostDetailsFragment extends Fragment {
                     tvConfirmWithTime.setText("Be there in " + selectedTime + " mins and be sure to say thank you :)");
                     tvConfirmWithTime.setVisibility(View.VISIBLE);
 
+                    EventBusProvider.post(new ClaimFiledEvent());
                 }
             }
         });
@@ -203,9 +210,9 @@ public class PostDetailsFragment extends Fragment {
             }
         });
 
+        EventBusProvider.register(this);
         return v;
     }
-
 
     @Override
     public void onAttach(Activity activity) {
@@ -228,6 +235,7 @@ public class PostDetailsFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
+        EventBusProvider.unregister(this);
     }
 
     public interface PostDetailsFragmentListener {

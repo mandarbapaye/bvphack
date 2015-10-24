@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.parse.GetDataCallback;
@@ -16,65 +17,11 @@ import com.parse.ParseImageView;
 
 import java.util.List;
 
+import bvp.bvphackthon.BVPHackthonApplication;
 import bvp.bvphackthon.R;
 import bvp.bvphackthon.models.Post;
 import bvp.bvphackthon.views.BVPParseImageView;
 
-//public class PostsListAdapter extends ArrayAdapter<Post> {
-//
-//    static class ViewHolder {
-//        @InjectView(R.id.ivFoodImageList)
-//        ParseImageView ivFoodImageList;
-//
-//        @InjectView(R.id.tvMinsList)
-//        TextView tvMinsList;
-//
-//        @InjectView(R.id.tvMilesList)
-//        TextView tvMilesList;
-//
-//        @InjectView(R.id.tvMealsList)
-//        TextView tvMealsList;
-//
-//        @InjectView(R.id.tvPostDescription)
-//        TextView tvPostDescription;
-//
-//        public ViewHolder(View view) {
-//            ButterKnife.inject(this, view);
-//        }
-//    }
-//
-//    public PostsListAdapter(Context context, List<Post> posts) {
-//        super(context, 0, posts);
-//    }
-//
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//        Post post = getItem(position);
-//
-//        final ViewHolder viewHolder;
-//        if (convertView != null) {
-//            viewHolder = (ViewHolder) convertView.getTag();
-//        } else {
-//            LayoutInflater inflater = LayoutInflater.from(getContext());
-//            convertView = inflater.inflate(R.layout.post_list_item, parent, false);
-//            viewHolder = new ViewHolder(convertView);
-//            convertView.setTag(viewHolder);
-//        }
-//
-//        viewHolder.tvMealsList.setText(String.valueOf(post.getNumberOfFeeders()));
-//        viewHolder.tvMinsList.setText("20");
-//        viewHolder.tvMilesList.setText(String.valueOf(Math.random() * 10));
-//        viewHolder.tvPostDescription.setText(post.getDescription());
-//
-//        ParseFile photoFile = post.getPhoto();
-//        if (photoFile != null) {
-//            viewHolder.ivFoodImageList.loadParseFileImageInBackground(photoFile);
-//        }
-//
-//        return convertView;
-//    }
-//
-//}
 
 public class PostsListAdapter extends ArrayAdapter<Post> {
 
@@ -85,6 +32,9 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
         TextView tvMealsList;
         TextView tvPostDescription;
         TextView tvPostTitle;
+
+        LinearLayout llConfirmedOnFeed;
+        LinearLayout llBlankSlate;
         int position;
     }
 
@@ -136,6 +86,9 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
             viewHolder.tvMilesList = (TextView) convertView.findViewById(R.id.tvMilesList);
             viewHolder.tvPostDescription = (TextView) convertView.findViewById(R.id.tvPostDescription);
             viewHolder.tvPostTitle = (TextView) convertView.findViewById(R.id.tvPostTitle);
+            viewHolder.llConfirmedOnFeed = (LinearLayout) convertView.findViewById(R.id.llConfirmedOnFeed);
+            viewHolder.llBlankSlate = (LinearLayout) convertView.findViewById(R.id.llBlankSlate);
+
             convertView.setTag(viewHolder);
         }
 
@@ -146,18 +99,17 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
         viewHolder.tvPostDescription.setText(post.getDescription());
         viewHolder.tvPostTitle.setText(post.getTitle());
 
+        if (BVPHackthonApplication.isClaimedByMe(post.getObjectId())) {
+            viewHolder.llBlankSlate.setVisibility(View.VISIBLE);
+            viewHolder.llConfirmedOnFeed.setVisibility(View.VISIBLE);
+        } else {
+            viewHolder.llBlankSlate.setVisibility(View.GONE);
+            viewHolder.llConfirmedOnFeed.setVisibility(View.GONE);
+        }
+
         ParseFile image = post.getPhoto();
         viewHolder.ivFoodImageList.setParseFile(image);
-        viewHolder.ivFoodImageList.loadInBackground(new GetDataCallback() {
-            public void done(byte[] data, ParseException e) {
-                // The image is loaded and displayed!
-//                int oldHeight = imageView.getHeight();
-//                int oldWidth = imageView.getWidth();
-//                Log.v("LOG!!!!!!", "imageView height = " + oldHeight);      // DISPLAYS 90 px
-//                Log.v("LOG!!!!!!", "imageView width = " + oldWidth);        // DISPLAYS 90 px
-            }
-        });
-
+        viewHolder.ivFoodImageList.loadInBackground();
 
 //
 //        viewHolder.ivFoodImageList.loadParseFileImageInBackground(post.getPhoto(), new GetDataCallback() {
