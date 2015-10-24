@@ -18,134 +18,133 @@
 
     </Toolbar>
 
-    <RelativeLayout
-        android:id="@+id/llNavButtons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:paddingRight="30dp"
-        android:paddingLeft="30dp"
-        >
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/llNavButtons"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--android:paddingTop="10dp"-->
+        <!--android:paddingRight="30dp"-->
+        <!--android:paddingLeft="30dp"-->
+        <!-->-->
 
-        <LinearLayout
-            android:id="@+id/llPickup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_alignParentLeft="true"
-            android:gravity="center">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/llPickup"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:gravity="center">-->
 
-            <ImageView
-                android:scaleType="centerCrop"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/banner_icon1"
-                android:layout_gravity="center"
-                />
+            <!--<ImageView-->
+                <!--android:scaleType="centerCrop"-->
+                <!--android:layout_width="35dp"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:src="@drawable/banner_icon1"-->
+                <!--android:layout_gravity="center"-->
+                <!--/>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Pickup"
-                android:textColor="@color/teal"
-                android:textStyle="bold"
-                />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/llPostFood"
-            android:layout_toRightOf="@id/llPickup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="55dp"
-            android:gravity="center">
-
-            <ImageView
-                android:scaleType="centerCrop"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/banner_icon2b"
-                android:layout_gravity="center"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Post"
-                android:textColor="@color/semiblack"
-                android:textStyle="bold"
-                />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--android:text="Pickup"-->
+                <!--android:textColor="@color/teal"-->
+                <!--android:textStyle="bold"-->
+                <!--/>-->
+        <!--</LinearLayout>-->
 
 
-        <LinearLayout
-            android:id="@+id/llProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:orientation="vertical"
-            android:gravity="center">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/llPostFood"-->
+            <!--android:layout_toRightOf="@id/llPickup"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_marginLeft="55dp"-->
+            <!--android:gravity="center">-->
 
-            <ImageView
-                android:scaleType="centerCrop"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/banner_icon4b"
-                android:layout_gravity="center"
-                />
+            <!--<ImageView-->
+                <!--android:scaleType="centerCrop"-->
+                <!--android:layout_width="35dp"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:src="@drawable/banner_icon2b"-->
+                <!--android:layout_gravity="center"-->
+                <!--/>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Profile"
-                android:textColor="@color/semiblack"
-                android:textStyle="bold"
-                />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--android:text="Post"-->
+                <!--android:textColor="@color/semiblack"-->
+                <!--android:textStyle="bold"-->
+                <!--/>-->
+        <!--</LinearLayout>-->
 
 
-        <LinearLayout
-            android:id="@+id/rivLocation"
-            android:layout_toLeftOf="@id/llProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginRight="55dp"
-            android:gravity="center">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/llProfile"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:orientation="vertical"-->
+            <!--android:gravity="center">-->
 
-            <ImageView
-                android:scaleType="centerCrop"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/banner_icon3b"
-                android:layout_gravity="center"
-                />
+            <!--<ImageView-->
+                <!--android:scaleType="centerCrop"-->
+                <!--android:layout_width="35dp"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:src="@drawable/banner_icon4b"-->
+                <!--android:layout_gravity="center"-->
+                <!--/>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Location"
-                android:textColor="@color/semiblack"
-                android:textStyle="bold"
-                />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--android:text="Profile"-->
+                <!--android:textColor="@color/semiblack"-->
+                <!--android:textStyle="bold"-->
+                <!--/>-->
+        <!--</LinearLayout>-->
 
-    </RelativeLayout>
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/rivLocation"-->
+            <!--android:layout_toLeftOf="@id/llProfile"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_marginRight="55dp"-->
+            <!--android:gravity="center">-->
+
+            <!--<ImageView-->
+                <!--android:scaleType="centerCrop"-->
+                <!--android:layout_width="35dp"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:src="@drawable/banner_icon3b"-->
+                <!--android:layout_gravity="center"-->
+                <!--/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--android:text="Location"-->
+                <!--android:textColor="@color/semiblack"-->
+                <!--android:textStyle="bold"-->
+                <!--/>-->
+        <!--</LinearLayout>-->
+
+    <!--</RelativeLayout>-->
 
     <ListView
         android:id="@+id/lvPosts"
-        android:layout_above="@id/llNavButtons"
         android:layout_below="@id/tbLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
