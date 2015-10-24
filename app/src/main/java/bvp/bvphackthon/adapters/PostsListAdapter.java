@@ -95,7 +95,7 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
         viewHolder.position = position;
         viewHolder.tvMealsList.setText(String.valueOf(post.getNumberOfFeeders()));
         viewHolder.tvMinsList.setText("20");
-        viewHolder.tvMilesList.setText(String.valueOf("1.9"));
+        viewHolder.tvMilesList.setText(String.valueOf(post.getDistance()));
         viewHolder.tvPostDescription.setText(post.getDescription());
         viewHolder.tvPostTitle.setText(post.getTitle());
 

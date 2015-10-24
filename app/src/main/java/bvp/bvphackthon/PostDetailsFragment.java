@@ -200,7 +200,7 @@ public class PostDetailsFragment extends Fragment {
         tvPostDetailsTitle.setText(post.getTitle());
         tvMealsDetails.setText(String.valueOf(post.getNumberOfFeeders()));
         tvMinsDetails.setText(String.valueOf("40"));
-        tvMilesDetails.setText(String.valueOf("1.9"));
+        tvMilesDetails.setText(String.valueOf(post.getDistance()));
         tvDetailsDescription.setText(post.getDescription());
         tvDetailsAddress.setText(post.getAddress());
 

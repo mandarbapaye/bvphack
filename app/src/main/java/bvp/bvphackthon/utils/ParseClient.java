@@ -23,12 +23,14 @@ public class ParseClient {
 
     public static <T extends ParseObject> void getAll(Class<T> classObj, FindCallback<T> callback) {
         ParseQuery<T> query = ParseQuery.getQuery(classObj);
+        query.addAscendingOrder("distance");
         query.findInBackground(callback);
     }
 
     public static <T extends ParseObject> List<T> getAllSync(Class<T> classObj) {
         try {
             ParseQuery<T> query = ParseQuery.getQuery(classObj);
+            query.addAscendingOrder("distance");
             return query.find();
         } catch (Exception e) {
             e.printStackTrace();
