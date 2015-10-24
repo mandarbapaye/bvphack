@@ -3,6 +3,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivityFragment"
     android:background="@color/white">
+    
+    <Toolbar
+        android:id="@+id/tbLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/header_logo"
+            />
+
+    </Toolbar>
 
     <RelativeLayout
         android:id="@+id/llNavButtons"
@@ -132,6 +146,7 @@
     <ListView
         android:id="@+id/lvPosts"
         android:layout_above="@id/llNavButtons"
+        android:layout_below="@id/tbLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:dividerHeight="1px"

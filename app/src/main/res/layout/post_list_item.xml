@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@color/white"
-            android:alpha="0.5"
+            android:alpha="0.8"
             android:layout_marginLeft="2dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -57,7 +57,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Miles"
+                    android:text="miles"
                     android:textSize="16sp"
                     android:textColor="@android:color/black"
                     />
@@ -85,7 +85,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mins."
+                    android:text="mins"
                     android:textSize="16sp"
                     android:textColor="@android:color/black"
                     />
@@ -112,7 +112,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Meals"
+                    android:text="meals"
                     android:textSize="16sp"
                     android:textColor="@android:color/black"
                     />
