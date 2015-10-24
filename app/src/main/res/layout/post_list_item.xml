@@ -15,7 +15,7 @@
             android:id="@+id/ivFoodImageList"
             android:src="@drawable/placeholder"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="175dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:layout_gravity="center"
