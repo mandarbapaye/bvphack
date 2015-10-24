@@ -45,14 +45,113 @@
                 android:layout_gravity="center"
                 />
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/claim_button"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                >
+
+                <LinearLayout
+                    android:id="@+id/llArrivalTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:background="@drawable/reactangular_border"
+                    android:layout_marginLeft="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="How many minutes until you arrive ?"
+                        android:textSize="16dp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="20"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="30"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="45"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="60"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/ivClaim"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/claim_button"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    />
+
+
+            </RelativeLayout>
+
 
         </FrameLayout>
     </RelativeLayout>

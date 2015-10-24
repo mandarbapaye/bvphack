@@ -48,11 +48,11 @@ public class MainActivity extends Activity
     public void onPostListItemClick(Post post) {
         BVPHackthonApplication.putInCache(post.getObjectId(), post);
 
-        if (postDetailsFragment == null) {
+//        if (postDetailsFragment == null) {
             postDetailsFragment = PostDetailsFragment.newInstance(post.getObjectId());
-        } else {
-            postDetailsFragment.setPostId(post.getObjectId());
-        }
+//        } else {
+//            postDetailsFragment.setPostId(post.getObjectId());
+//        }
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment, postDetailsFragment, "post_details");
@@ -63,6 +63,12 @@ public class MainActivity extends Activity
     @Override
     public void onConfirmation() {
         Log.d("BVP", "Pickup Confirmed");
+        onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
 

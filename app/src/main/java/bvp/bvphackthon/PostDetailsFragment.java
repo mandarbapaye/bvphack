@@ -7,6 +7,8 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.parse.ParseImageView;
@@ -21,10 +23,14 @@ public class PostDetailsFragment extends Fragment {
 
     private String postId;
     private Post post;
+    private boolean isClaimClicked = false;
     private PostDetailsFragmentListener mListener;
 
     @InjectView(R.id.ivFoodImageDetails)
     ParseImageView ivFoodImageDetails;
+
+    @InjectView(R.id.ivClaim)
+    ImageView ivClaim;
 
     @InjectView(R.id.tvPostDetailsTitle)
     TextView tvPostDetailsTitle;
@@ -43,6 +49,9 @@ public class PostDetailsFragment extends Fragment {
 
     @InjectView(R.id.tvDetailsAddress)
     TextView tvDetailsAddress;
+
+    @InjectView(R.id.llArrivalTime)
+    LinearLayout llArrivalTime;
 
     // TODO: Rename and change types and number of parameters
     public static PostDetailsFragment newInstance(String postId) {
@@ -78,6 +87,19 @@ public class PostDetailsFragment extends Fragment {
         if (postId != null) {
             post = (Post) BVPHackthonApplication.readFromCache(postId);
         }
+
+        ivClaim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isClaimClicked) {
+                    ivClaim.setImageResource(R.drawable.confirm_button);
+                    llArrivalTime.setVisibility(View.VISIBLE);
+                } else {
+                    BVPHackthonApplication.putInClaimedPostsCache(post);
+                    mListener.onConfirmation();
+                }
+            }
+        });
 
         tvPostDetailsTitle.setText(post.getTitle());
         tvMealsDetails.setText(String.valueOf(post.getNumberOfFeeders()));
