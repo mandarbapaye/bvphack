@@ -2,6 +2,7 @@ package bvp.bvphackthon;
 
 import android.app.Application;
 import android.content.Context;
+import android.location.Location;
 
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -20,6 +21,7 @@ public class BVPHackthonApplication extends Application {
     private static Context context;
     private static Map<String, ParseObject> parseObjectCache = new HashMap<String, ParseObject>();
     private static Map<String, Post> claimedPostsCache = new HashMap<String, Post>();
+    private static Location myLocation;
 
     @Override
     public void onCreate() {
@@ -45,6 +47,14 @@ public class BVPHackthonApplication extends Application {
 
     public static boolean isClaimedByMe(String postId) {
         return claimedPostsCache.containsKey(postId);
+    }
+
+    public static void setLocation(Location location) {
+        myLocation = location;
+    }
+
+    public static Location getLocation() {
+        return myLocation;
     }
 
 

@@ -2,23 +2,33 @@ package bvp.bvphackthon;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+
 import bvp.bvphackthon.models.Post;
 
 public class MainActivity extends Activity
         implements MainActivityFragment.PostsListFragmentListener,
-        PostDetailsFragment.PostDetailsFragmentListener {
+        PostDetailsFragment.PostDetailsFragmentListener,
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private PostDetailsFragment postDetailsFragment;
+    private GoogleApiClient mGoogleApiClient;
+    Location mLastLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        buildGoogleApiClient();
     }
 
 
@@ -69,6 +79,37 @@ public class MainActivity extends Activity
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    protected synchronized void buildGoogleApiClient() {
+        int errorCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        if (mLastLocation != null) {
+            BVPHackthonApplication.setLocation(mLastLocation);
+            double lati = mLastLocation.getLatitude();
+            double longi = mLastLocation.getLongitude();
+
+//            mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
+//            mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
     }
 }
 

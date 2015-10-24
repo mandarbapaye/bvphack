@@ -13,6 +13,6 @@
         android:layout_height="200dp"
         android:scaleType="fitCenter"
         android:layout_gravity="center"
-        android:src="@drawable/intro_logo2"/>
+        android:src="@drawable/updated_intro"/>
 
 </LinearLayout>

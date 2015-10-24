@@ -86,7 +86,7 @@
                             android:layout_height="30dp"
                             android:layout_marginRight="7dp"
                             android:visibility="gone"
-                            android:src="@drawable/confirm_button"/>
+                            android:src="@drawable/green_thumb"/>
 
                         <TextView
                             android:id="@+id/tvStatus"
