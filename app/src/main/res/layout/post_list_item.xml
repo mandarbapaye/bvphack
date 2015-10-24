@@ -15,7 +15,8 @@
         android:paddingBottom="10dp"
         android:singleLine="true"
         android:text="This is Sample text that is really really long and you should ignore."
-        android:ellipsize="end"/>
+        android:ellipsize="end"
+        android:textColor="@android:color/black"/>
 
 
     <FrameLayout
@@ -38,10 +39,10 @@
             android:orientation="vertical"
             android:background="@color/white"
             android:alpha="0.5"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:dividerPadding="@dimen/activity_horizontal_margin"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical">
@@ -60,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:text="1.1"
                     android:textStyle="bold"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:textColor="@android:color/black"
                     />
 
@@ -68,6 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Miles"
+                    android:textSize="18sp"
                     android:textColor="@android:color/black"
                     />
             </LinearLayout>
@@ -87,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:text="10"
                     android:textStyle="bold"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:textColor="@android:color/black"
                     />
 
@@ -95,6 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mins."
+                    android:textSize="18sp"
                     android:textColor="@android:color/black"
                     />
             </LinearLayout>
@@ -113,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:text="8"
                     android:textStyle="bold"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:textColor="@android:color/black"
                     />
 
@@ -121,6 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Meals"
+                    android:textSize="18sp"
                     android:textColor="@android:color/black"
                     />
             </LinearLayout>
