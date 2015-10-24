@@ -9,13 +9,17 @@
         android:name=".BVPHackthonApplication"
         android:allowBackup="true"
         android:debuggable="true"
-        android:largeHeap="true"
         android:icon="@drawable/header_logo"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:label="" >
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/title_activity_splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
