@@ -61,7 +61,7 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
             convertView.setTag(viewHolder);
         }
 
-        viewHolder.tvMealsList.setText(post.getNumberOfFeeders());
+        viewHolder.tvMealsList.setText(String.valueOf(post.getNumberOfFeeders()));
         viewHolder.tvMinsList.setText("20");
         viewHolder.tvMilesList.setText(String.valueOf(Math.random() * 10));
         viewHolder.tvPostDescription.setText(post.getDescription());

@@ -27,7 +27,7 @@ import bvp.bvphackthon.utils.ParseClient;
 public class MainActivityFragment extends Fragment {
 
     @InjectView(R.id.lvPosts)
-    ListView lvPostsList;
+    ListView lvPosts;
 
     List<Post> postsList;
     PostsListAdapter postsListAdapter;
@@ -42,6 +42,7 @@ public class MainActivityFragment extends Fragment {
         super.onCreate(savedInstanceState);
         postsList = new ArrayList<Post>();
         postsListAdapter = new PostsListAdapter(getActivity(), postsList);
+
     }
 
     @Override
@@ -56,8 +57,14 @@ public class MainActivityFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        lvPosts.setAdapter(postsListAdapter);
+    }
+
     private void setupHandlers() {
-        lvPostsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvPosts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mListener.onPostListItemClick(postsListAdapter.getItem(position));
