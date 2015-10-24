@@ -2,10 +2,13 @@ package bvp.bvphackthon;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends Activity {
+import bvp.bvphackthon.models.Post;
+
+public class MainActivity extends Activity implements MainActivityFragment.PostsListFragmentListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +37,10 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onPostListItemClick(Post post) {
+        Log.d("PostClicked", "Post Clicked");
     }
 }

@@ -35,6 +35,9 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
         @InjectView(R.id.tvMealsList)
         TextView tvMealsList;
 
+        @InjectView(R.id.tvPostDescription)
+        TextView tvPostDescription;
+
         public ViewHolder(View view) {
             ButterKnife.inject(this, view);
         }
@@ -61,6 +64,7 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
         viewHolder.tvMealsList.setText(post.getNumberOfFeeders());
         viewHolder.tvMinsList.setText("20");
         viewHolder.tvMilesList.setText(String.valueOf(Math.random() * 10));
+        viewHolder.tvPostDescription.setText(post.getDescription());
 
         ParseFile photoFile = post.getPhoto();
         if (photoFile != null) {

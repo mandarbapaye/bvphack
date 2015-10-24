@@ -4,6 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/tvPostDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:singleLine="true"
+        android:text="This is Sample text that is really really long and you should ignore."
+        android:ellipsize="end"/>
+
+
     <FrameLayout
         android:id="@+id/flPost"
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/tvPostDescription">
 
-        <ImageView
+        <bvp.bvphackthon.views.ParseImageView
             android:id="@+id/ivFoodImageList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,18 +128,6 @@
         </LinearLayout>
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/tvPostDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:singleLine="true"
-        android:text="This is Sample text that is really really long and you should ignore."
-        android:ellipsize="end"/>
 
 </RelativeLayout>
 
