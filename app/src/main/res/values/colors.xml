@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="semi_black">#222222</color>
     <color name="teal">#5dd3ac</color>
     <color name="white">#ffffff</color>
+    <color name="semiblack">#666666</color>
 </resources>

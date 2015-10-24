@@ -12,17 +12,17 @@ import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 
-public class ParseImageView extends ImageView {
+public class BVPParseImageView extends ImageView {
 
-    public ParseImageView(Context context) {
+    public BVPParseImageView(Context context) {
         super(context);
     }
 
-    public ParseImageView(android.content.Context context, android.util.AttributeSet attrs) {
+    public BVPParseImageView(android.content.Context context, android.util.AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public ParseImageView(android.content.Context context, android.util.AttributeSet attrs, int defStyle) {
+    public BVPParseImageView(android.content.Context context, android.util.AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 

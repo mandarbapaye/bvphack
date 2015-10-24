@@ -7,20 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseImageView;
 
 import java.util.List;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 import bvp.bvphackthon.R;
 import bvp.bvphackthon.models.Post;
-import bvp.bvphackthon.views.ParseImageView;
+import bvp.bvphackthon.views.BVPParseImageView;
 
 //public class PostsListAdapter extends ArrayAdapter<Post> {
 //
@@ -142,20 +140,34 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
         viewHolder.position = position;
         viewHolder.tvMealsList.setText(String.valueOf(post.getNumberOfFeeders()));
         viewHolder.tvMinsList.setText("20");
-        viewHolder.tvMilesList.setText(String.valueOf(Math.random() * 10));
+        viewHolder.tvMilesList.setText(String.valueOf("1.9"));
         viewHolder.tvPostDescription.setText(post.getDescription());
 
-        viewHolder.ivFoodImageList.loadParseFileImageInBackground(post.getPhoto(), new GetDataCallback() {
+        ParseFile image = post.getPhoto();
+        viewHolder.ivFoodImageList.setParseFile(image);
+        viewHolder.ivFoodImageList.loadInBackground(new GetDataCallback() {
             public void done(byte[] data, ParseException e) {
-                if (e == null) {
-                    if (viewHolder.position == position) {
-                        Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
-                        viewHolder.ivFoodImageList.setImageBitmap(bmp);
-                        viewHolder.ivFoodImageList.setVisibility(View.VISIBLE);
-                    }
-                }
+                // The image is loaded and displayed!
+//                int oldHeight = imageView.getHeight();
+//                int oldWidth = imageView.getWidth();
+//                Log.v("LOG!!!!!!", "imageView height = " + oldHeight);      // DISPLAYS 90 px
+//                Log.v("LOG!!!!!!", "imageView width = " + oldWidth);        // DISPLAYS 90 px
             }
         });
+
+
+//
+//        viewHolder.ivFoodImageList.loadParseFileImageInBackground(post.getPhoto(), new GetDataCallback() {
+//            public void done(byte[] data, ParseException e) {
+//                if (e == null) {
+//                    if (viewHolder.position == position) {
+//                        Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
+//                        viewHolder.ivFoodImageList.setImageBitmap(bmp);
+//                        viewHolder.ivFoodImageList.setVisibility(View.VISIBLE);
+//                    }
+//                }
+//            }
+//        });
 
         return convertView;
     }

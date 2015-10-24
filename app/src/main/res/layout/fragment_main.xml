@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivityFragment">
+    tools:context=".MainActivityFragment"
+    android:background="@color/white">
 
     <RelativeLayout
         android:id="@+id/llNavButtons"
@@ -11,51 +12,120 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"
         android:orientation="horizontal"
-        android:padding="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="30dp"
+        android:paddingLeft="30dp"
         >
 
-        <ImageView
-            android:id="@+id/rivPickup"
-            android:scaleType="centerCrop"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/test"
-            android:layout_gravity="center"
+        <LinearLayout
+            android:id="@+id/llPickup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_alignParentLeft="true"
-            />
+            android:gravity="center">
 
-        <ImageView
-            android:id="@+id/rivPostFood"
-            android:scaleType="centerCrop"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/test"
-            android:layout_gravity="center"
-            android:layout_toRightOf="@id/rivPickup"
-            android:layout_marginLeft="50dp"
-            />
+            <ImageView
+                android:scaleType="centerCrop"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/banner_icon1"
+                android:layout_gravity="center"
+                />
 
-        <ImageView
-            android:id="@+id/rivProfile"
-            android:scaleType="centerCrop"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/test"
-            android:layout_gravity="center"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Pickup"
+                android:textColor="@color/teal"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llPostFood"
+            android:layout_toRightOf="@id/llPickup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="55dp"
+            android:gravity="center">
+
+            <ImageView
+                android:scaleType="centerCrop"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/banner_icon2b"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Post"
+                android:textColor="@color/semiblack"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            />
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <ImageView
+            <ImageView
+                android:scaleType="centerCrop"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/banner_icon4b"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Profile"
+                android:textColor="@color/semiblack"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:id="@+id/rivLocation"
-            android:scaleType="centerCrop"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/test"
-            android:layout_gravity="center"
-            android:layout_toLeftOf="@id/rivProfile"
-            android:layout_marginRight="50dp"
-            />
+            android:layout_toLeftOf="@id/llProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="55dp"
+            android:gravity="center">
 
+            <ImageView
+                android:scaleType="centerCrop"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/banner_icon3b"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Location"
+                android:textColor="@color/semiblack"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
 
     </RelativeLayout>
 
