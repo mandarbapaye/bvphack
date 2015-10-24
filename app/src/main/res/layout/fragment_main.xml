@@ -11,7 +11,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="10dp"
+        >
 
         <ImageView
             android:id="@+id/rivPickup"
