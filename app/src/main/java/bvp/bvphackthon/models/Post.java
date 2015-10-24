@@ -12,6 +12,7 @@ public class Post extends ParseObject implements Serializable {
     private static final String NOFEEDERS_KEY  = "number_will_feed";
     private static final String PHOTO_KEY = "photo";
     private static final String STATUS_KEY = "status";
+    private static final String TITLE_KEY = "title";
 
     public String getStatus() {
         return getString(STATUS_KEY);
@@ -19,6 +20,10 @@ public class Post extends ParseObject implements Serializable {
 
     public String getDescription() {
         return getString(DESCRIPTION_KEY);
+    }
+
+    public String getTitle() {
+        return getString(TITLE_KEY);
     }
 
     public ParseFile getPhoto() {

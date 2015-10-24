@@ -84,6 +84,7 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
         TextView tvMilesList;
         TextView tvMealsList;
         TextView tvPostDescription;
+        TextView tvPostTitle;
         int position;
     }
 
@@ -134,6 +135,7 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
             viewHolder.tvMinsList = (TextView) convertView.findViewById(R.id.tvMinsList);
             viewHolder.tvMilesList = (TextView) convertView.findViewById(R.id.tvMilesList);
             viewHolder.tvPostDescription = (TextView) convertView.findViewById(R.id.tvPostDescription);
+            viewHolder.tvPostTitle = (TextView) convertView.findViewById(R.id.tvPostTitle);
             convertView.setTag(viewHolder);
         }
 
@@ -142,6 +144,7 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
         viewHolder.tvMinsList.setText("20");
         viewHolder.tvMilesList.setText(String.valueOf("1.9"));
         viewHolder.tvPostDescription.setText(post.getDescription());
+        viewHolder.tvPostTitle.setText(post.getTitle());
 
         ParseFile image = post.getPhoto();
         viewHolder.ivFoodImageList.setParseFile(image);
