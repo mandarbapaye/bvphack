@@ -236,7 +236,7 @@
                     android:layout_height="wrap_content"
                     android:text="1.1"
                     android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textColor="@android:color/white"
                     />
 
@@ -244,7 +244,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="miles"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:textColor="@android:color/white"
                     />
             </LinearLayout>
@@ -264,7 +264,7 @@
                     android:layout_height="wrap_content"
                     android:text="10"
                     android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textColor="@android:color/white"
                     />
 
@@ -272,7 +272,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="mins"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:textColor="@android:color/white"
                     />
             </LinearLayout>
@@ -291,7 +291,7 @@
                     android:layout_height="wrap_content"
                     android:text="8"
                     android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textColor="@android:color/white"
                     />
 
@@ -299,7 +299,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="meals"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:textColor="@android:color/white"
                     />
             </LinearLayout>
