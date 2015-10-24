@@ -15,6 +15,10 @@ import android.widget.TextView;
 
 import com.parse.ParseImageView;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.Date;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import bvp.bvphackthon.events.ClaimFiledEvent;
@@ -25,6 +29,12 @@ import bvp.bvphackthon.utils.ParseClient;
 
 public class PostDetailsFragment extends Fragment {
     private static final String POST_ID = "postId";
+
+    private static DecimalFormat df;
+    static {
+        df = new DecimalFormat("#");
+        df.setRoundingMode(RoundingMode.CEILING);
+    }
 
     private String postId;
     private Post post;
@@ -89,6 +99,9 @@ public class PostDetailsFragment extends Fragment {
 
     @InjectView(R.id.tvConfirmWithTime)
     TextView tvConfirmWithTime;
+
+    @InjectView(R.id.tvMinsLabelDetails)
+    TextView tvMinsLabelDetails;
 
     // TODO: Rename and change types and number of parameters
     public static PostDetailsFragment newInstance(String postId) {
@@ -199,10 +212,21 @@ public class PostDetailsFragment extends Fragment {
 
         tvPostDetailsTitle.setText(post.getTitle());
         tvMealsDetails.setText(String.valueOf(post.getNumberOfFeeders()));
-        tvMinsDetails.setText(String.valueOf("40"));
         tvMilesDetails.setText(String.valueOf(post.getDistance()));
         tvDetailsDescription.setText(post.getDescription());
         tvDetailsAddress.setText(post.getAddress());
+
+        Date createdAt = post.getCreatedAt();
+        long elapsedTimeMs = System.currentTimeMillis() - createdAt.getTime();
+        double elapsedTime = elapsedTimeMs / (1000 * 60);
+        if (elapsedTime > 60) {
+            elapsedTime = elapsedTime / 60;
+            tvMinsLabelDetails.setText("Hrs");
+        } else {
+            tvMinsLabelDetails.setText("Mins");
+        }
+        tvMinsDetails.setText(df.format(elapsedTime));
+
 
         ivFoodImageDetails.setParseFile(post.getPhoto());
         ivFoodImageDetails.loadInBackground();

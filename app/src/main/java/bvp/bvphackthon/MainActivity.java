@@ -17,18 +17,14 @@ import bvp.bvphackthon.models.Post;
 
 public class MainActivity extends Activity
         implements MainActivityFragment.PostsListFragmentListener,
-        PostDetailsFragment.PostDetailsFragmentListener,
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+        PostDetailsFragment.PostDetailsFragmentListener {
 
     private PostDetailsFragment postDetailsFragment;
-    private GoogleApiClient mGoogleApiClient;
-    Location mLastLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        buildGoogleApiClient();
     }
 
 
@@ -81,36 +77,6 @@ public class MainActivity extends Activity
         super.onBackPressed();
     }
 
-    protected synchronized void buildGoogleApiClient() {
-        int errorCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
-        mGoogleApiClient.connect();
-    }
-
-    @Override
-    public void onConnected(Bundle bundle) {
-        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (mLastLocation != null) {
-            BVPHackthonApplication.setLocation(mLastLocation);
-            double lati = mLastLocation.getLatitude();
-            double longi = mLastLocation.getLongitude();
-
-//            mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
-//            mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
-        }
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-    }
 }
 
 

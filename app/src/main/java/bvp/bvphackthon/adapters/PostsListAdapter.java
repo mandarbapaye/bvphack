@@ -15,6 +15,9 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.List;
 
 import bvp.bvphackthon.BVPHackthonApplication;
@@ -25,6 +28,12 @@ import bvp.bvphackthon.views.BVPParseImageView;
 
 public class PostsListAdapter extends ArrayAdapter<Post> {
 
+    private static DecimalFormat df;
+    static {
+        df = new DecimalFormat("#");
+        df.setRoundingMode(RoundingMode.CEILING);
+    }
+
     private static class ViewHolder {
         ParseImageView ivFoodImageList;
         TextView tvMinsList;
@@ -32,6 +41,7 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
         TextView tvMealsList;
         TextView tvPostDescription;
         TextView tvPostTitle;
+        TextView tvMinsLabelList;
 
         LinearLayout llConfirmedOnFeed;
         LinearLayout llBlankSlate;
@@ -83,6 +93,8 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
             viewHolder.ivFoodImageList = (ParseImageView) convertView.findViewById(R.id.ivFoodImageList);
             viewHolder.tvMealsList = (TextView) convertView.findViewById(R.id.tvMealsList);
             viewHolder.tvMinsList = (TextView) convertView.findViewById(R.id.tvMinsList);
+            viewHolder.tvMinsLabelList = (TextView) convertView.findViewById(R.id.tvMinsLabelList);
+
             viewHolder.tvMilesList = (TextView) convertView.findViewById(R.id.tvMilesList);
             viewHolder.tvPostDescription = (TextView) convertView.findViewById(R.id.tvPostDescription);
             viewHolder.tvPostTitle = (TextView) convertView.findViewById(R.id.tvPostTitle);
@@ -94,10 +106,20 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
 
         viewHolder.position = position;
         viewHolder.tvMealsList.setText(String.valueOf(post.getNumberOfFeeders()));
-        viewHolder.tvMinsList.setText("20");
         viewHolder.tvMilesList.setText(String.valueOf(post.getDistance()));
         viewHolder.tvPostDescription.setText(post.getDescription());
         viewHolder.tvPostTitle.setText(post.getTitle());
+
+        Date createdAt = post.getCreatedAt();
+        long elapsedTimeMs = System.currentTimeMillis() - createdAt.getTime();
+        double elapsedTime = elapsedTimeMs / (1000 * 60);
+        if (elapsedTime > 60) {
+            elapsedTime = elapsedTime / 60;
+            viewHolder.tvMinsLabelList.setText("Hrs");
+        } else {
+            viewHolder.tvMinsLabelList.setText("Mins");
+        }
+        viewHolder.tvMinsList.setText(df.format(elapsedTime));
 
         if (post.isClaimed() || BVPHackthonApplication.isClaimedByMe(post.getObjectId())) {
             viewHolder.llBlankSlate.setVisibility(View.VISIBLE);

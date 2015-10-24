@@ -5,6 +5,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @ParseClassName("Post")
 public class Post extends ParseObject implements Serializable {
@@ -16,6 +17,7 @@ public class Post extends ParseObject implements Serializable {
     private static final String ADDRESS_KEY = "address";
     private static final String CLAIMER_ID_KEY = "is_claimed";
     private static final String DISTANCE_KEY = "distance";
+//    private static final String CREATED_AT_KEY = "createdAt";
 
     public String getStatus() {
         return getString(STATUS_KEY);
@@ -50,6 +52,5 @@ public class Post extends ParseObject implements Serializable {
     public double getDistance() {
         return getDouble(DISTANCE_KEY);
     }
-
 
 }
