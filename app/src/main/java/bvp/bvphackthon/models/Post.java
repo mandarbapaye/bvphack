@@ -14,6 +14,7 @@ public class Post extends ParseObject implements Serializable {
     private static final String STATUS_KEY = "status";
     private static final String TITLE_KEY = "title";
     private static final String ADDRESS_KEY = "address";
+    private static final String CLAIMER_ID_KEY = "is_claimed";
 
     public String getStatus() {
         return getString(STATUS_KEY);
@@ -37,6 +38,12 @@ public class Post extends ParseObject implements Serializable {
 
     public int getNumberOfFeeders() {
         return getInt(NOFEEDERS_KEY);
+    }
+
+    public boolean isClaimed() { return getBoolean(CLAIMER_ID_KEY); };
+
+    public void markClaimed() {
+        put(CLAIMER_ID_KEY, true);
     }
 
 }

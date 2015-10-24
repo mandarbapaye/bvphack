@@ -99,7 +99,7 @@ public class PostsListAdapter extends ArrayAdapter<Post> {
         viewHolder.tvPostDescription.setText(post.getDescription());
         viewHolder.tvPostTitle.setText(post.getTitle());
 
-        if (BVPHackthonApplication.isClaimedByMe(post.getObjectId())) {
+        if (post.isClaimed() || BVPHackthonApplication.isClaimedByMe(post.getObjectId())) {
             viewHolder.llBlankSlate.setVisibility(View.VISIBLE);
             viewHolder.llConfirmedOnFeed.setVisibility(View.VISIBLE);
         } else {

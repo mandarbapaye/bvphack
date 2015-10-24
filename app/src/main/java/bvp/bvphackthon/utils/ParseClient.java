@@ -17,6 +17,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import bvp.bvphackthon.models.Post;
+
 public class ParseClient {
 
     public static <T extends ParseObject> void getAll(Class<T> classObj, FindCallback<T> callback) {
@@ -32,6 +34,11 @@ public class ParseClient {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static void markPostAsClaimed(Post post) {
+        post.markClaimed();
+        post.saveInBackground();
     }
 
 }

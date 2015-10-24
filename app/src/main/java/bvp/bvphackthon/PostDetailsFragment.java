@@ -20,6 +20,7 @@ import butterknife.InjectView;
 import bvp.bvphackthon.events.ClaimFiledEvent;
 import bvp.bvphackthon.models.Post;
 import bvp.bvphackthon.utils.EventBusProvider;
+import bvp.bvphackthon.utils.ParseClient;
 
 
 public class PostDetailsFragment extends Fragment {
@@ -124,7 +125,7 @@ public class PostDetailsFragment extends Fragment {
             post = (Post) BVPHackthonApplication.readFromCache(postId);
         }
 
-        if (BVPHackthonApplication.isClaimedByMe(postId)) {
+        if (post.isClaimed() || BVPHackthonApplication.isClaimedByMe(post.getObjectId())) {
             ivClaim.setVisibility(View.INVISIBLE);
         }
 
@@ -136,6 +137,8 @@ public class PostDetailsFragment extends Fragment {
                     llArrivalTime.setVisibility(View.VISIBLE);
                     isClaimClicked = true;
                 } else {
+                    ParseClient.markPostAsClaimed(post);
+
                     BVPHackthonApplication.putInClaimedPostsCache(post);
 
                     ivClaim.setVisibility(View.INVISIBLE);
